@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../PrismaService';
 import { Prisma } from '@prisma/client';
+import SaveTaskDto from 'src/UseCase/SaveTask/SaveTaskDto';
 
 @Injectable()
 export default class TaskRepository {
@@ -18,9 +19,13 @@ export default class TaskRepository {
     });
   }
 
-  async createTask(data: { title: string; description?: string }) {
+  async createTask(dto : SaveTaskDto) {
     return this.prisma.task.create({
-      data,
+      data: {
+        name:dto.name, 
+        createdAt:  dto.createdAt ?? new Date(), // Optionnel, sinon Prisma utilise l'heure actuelle
+        updatedAt:  dto.createdAt ?? new Date(),
+      }, 
     });
   }
 
