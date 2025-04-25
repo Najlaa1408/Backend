@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Put
 } from '@nestjs/common';
 import DeleteTask from '../UseCase/DeleteTask/DeleteTask';
 import GetAllTasksUseCase from '../UseCase/GetAllTasks/GetAllTasksUseCase';
