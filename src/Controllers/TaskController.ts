@@ -7,11 +7,11 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import DeleteTask from '../UseCase/DeleteTask/DeleteTask';  // Cas d'utilisation pour la suppression
-import GetAllTasksUseCase from '../UseCase/GetAllTasks/GetAllTasksUseCase';  // Cas d'utilisation pour récupérer toutes les tâches
-import SaveTaskDto from '../UseCase/SaveTask/SaveTaskDto';  // DTO de la tâche
+import DeleteTask from '../UseCase/DeleteTask/DeleteTask';  
+import GetAllTasksUseCase from '../UseCase/GetAllTasks/GetAllTasksUseCase';  
+import SaveTaskDto from '../UseCase/SaveTask/SaveTaskDto'; 
 import UseCaseFactory from '../UseCase/UseCaseFactory';
-import CreateTaskUseCase from '../UseCase/CreateTask/CreateTaskUseCase';  // Cas d'utilisation pour la création d'une tâche
+import CreateTaskUseCase from '../UseCase/CreateTask/CreateTaskUseCase';  
 import { UpdateTaskUseCase } from 'src/UseCase/UpdateTask/UpdateTaskUseCase';
 
 @Controller()
@@ -30,7 +30,7 @@ export default class TaskController {
     const createTaskUseCase = await this.useCaseFactory.create(CreateTaskUseCase);
 
     // Appel du cas d'utilisation pour créer la tâche
-    const createdTask = await createTaskUseCase.handle(dto);  // Passe directement dto à handle
+    const createdTask = await createTaskUseCase.handle(dto);  
 
     return createdTask;  // Retourne la tâche créée
   }

@@ -7,6 +7,6 @@ export class UpdateTaskUseCase {
   constructor(private readonly taskRepository: TaskRepository) {}
 
   async handle(id: number, dto: SaveTaskDto) {
-    return this.taskRepository.updateTask(id, dto);
+    return this.taskRepository.updateTask(id,dto);
   }
 }

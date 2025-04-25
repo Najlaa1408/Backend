@@ -23,16 +23,20 @@ export default class TaskRepository {
     return this.prisma.task.create({
       data: {
         name:dto.name, 
-        createdAt:  dto.createdAt ?? new Date(), // Optionnel, sinon Prisma utilise l'heure actuelle
+        createdAt:  dto.createdAt ?? new Date(), 
         updatedAt:  dto.createdAt ?? new Date(),
       }, 
     });
   }
 
-  async updateTask(id: number, data: { title?: string; description?: string }) {
+  async updateTask(id: number, dto: SaveTaskDto) {
     return this.prisma.task.update({
       where: { id },
-      data,
+      data: {
+        name: dto.name,
+        createdAt: dto.createdAt,
+        updatedAt: new Date(), 
+      },
     });
   }
 
@@ -41,10 +45,6 @@ export default class TaskRepository {
       | Prisma.XOR<Prisma.TaskCreateInput, Prisma.TaskUncheckedCreateInput>
       | Prisma.XOR<Prisma.TaskUpdateInput, Prisma.TaskUncheckedUpdateInput>,
   ) {
-    if (!data.id) {
-      // @todo IMPLEMENT HERE USING PRISMA API
-    }
-
-    // @todo IMPLEMENT HERE USING PRISMA API
+    
   }
 }
